@@ -55,9 +55,9 @@ app.use("/lista", listaArticulosDb);
 app.use("/proyectos", proyectosGaleria);
 
 // Archivos estáticos------
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, './client/dist')));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist", "index.html"));
+  res.sendFile(path.join(__dirname, "./client/dist", "index.html"));
 });
 
 //----Middleware  -de manejo de errores-------
