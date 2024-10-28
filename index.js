@@ -1,9 +1,7 @@
 const express = require("express");
 // compresion de texto para mejorar el rendimiento
 const compression = require("compression");
-// complemento para paquete de compression
 const zlib = require('zlib');
-//Esto carga el módulo path para las rutas segura y hacer la  compresion de texto mas segura.
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -21,7 +19,7 @@ const articulosDb = require("./routes/articulosRoute");
 const listaArticulosDb = require("./routes/articulosRoute");
 const matriculaDb = require("./routes/matriculaRoute");
 const proyectosGaleria = require("./routes/proyectosRoute");
-
+    
 //------------------APP.USES----------------------
 const app = express();
 
@@ -30,6 +28,9 @@ app.use(compression({
   level:  zlib.constants.Z_BEST_COMPRESSION,
   threshold: 0, // Comprime todos los archivos, sin importar su tamaño
   filter: (req, res) => {
+    if (req.headers['x-no-compression']) {
+      return false;
+    }
     // Comprimir si el tipo de contenido es uno de estos
     return /json|text|javascript|css|html/.test(res.getHeader('Content-Type'));
   }
