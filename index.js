@@ -13,13 +13,13 @@ require("dotenv").config();
 
 //----------------------------------
 
-const db = require("../server/basedatos");
+const db = require("./basedatos");
 const usuariosDb = require("./routes/userRoute");
 const articulosDb = require("./routes/articulosRoute");
 const listaArticulosDb = require("./routes/articulosRoute");
 const matriculaDb = require("./routes/matriculaRoute");
 const proyectosGaleria = require("./routes/proyectosRoute");
-    
+
 //------------------APP.USES----------------------
 const app = express();
 
