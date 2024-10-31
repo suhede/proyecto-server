@@ -55,20 +55,11 @@ app.use("/lista", listaArticulosDb);
 app.use("/proyectos", proyectosGaleria);
 
 // Archivos estáticos------
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, './client/dist')));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  res.sendFile(path.join(__dirname, "./client/dist/index.html"));
 });
 
-app.get('/',(req,res)=>{
-
-  try{
-    res.status(200).json('Url lanzada en ruta de inicio /')
-  }catch (error){
-    res.status(500).json('Error dentro de Express')
-  }
-
-});
 //----Middleware  -de manejo de errores-------
 app.use((error, req, res, next) => {
   console.error(error.stack);
