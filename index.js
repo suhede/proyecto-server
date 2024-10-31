@@ -65,7 +65,16 @@ app.use((error, req, res, next) => {
   console.error(error.stack);
   res.status(500).json("Algo ha fallado!!");
 });
+//--------------------------------------------------------------------------------
+app.get('/',(req,res)=>{
 
+  try{
+    res.status(200).json('Url lanzada en ruta de inicio /')
+  }catch (error){
+    res.status(500).json('Error dentro de Express')
+  }
+
+});
 //-------------------PORT------------------------
 
 app.listen(process.env.PORT, () => {
